@@ -18,17 +18,18 @@ public class decimalToBinary {
 		System.out.print("num2:  "+ num2+ "  ,  ");
 		int total = num1 + num2;
 		
-		System.out.println(convertToDecimal(total));
+		System.out.println("The Total is " +convertToDecimal(total));
 		
 	}
 	
 	public static int convertToInt(String bin){
 		int counter = 0;
 		int value=0;
+	
 		while(counter < bin.length()){
+			
 			if(bin.charAt(bin.length()-1-counter) == '1'){
 				value = value + powerOfTwo(counter);
-				//System.out.println("poweroftwo: "+ powerOfTwo(counter));
 			}
 			counter++;
 		}
@@ -45,40 +46,25 @@ public class decimalToBinary {
 
 	public static String convertToDecimal(int bin){
 		int temp = bin; 
-		StringBuffer b = new StringBuffer();
-	
+		String reverCopy = "";
+		String replacment = "";
 		
 		while(temp > 0){
 			
-				
-		if(bin% 2 == 0){
 			if(temp % 2 == 0){
-				b.append("1");
+				replacment = replacment + "0";
 			}else{
-				b.append("0");
+				replacment = replacment + "1";
 			}
-		
-		} else{
-			if(temp % 2 == 0){
-				b.append("0");
-			}else{
-				b.append("1");
-			}
-		
-		}
-		
-			
-			
-			System.out.println("inside the loop: "+temp);
 			temp = temp/2;
 		}
-		if(bin % 2 == 1){
-			b.reverse();
+		
+		
+		for(int i = 0; i < replacment.length(); i++){
+			reverCopy = reverCopy + replacment.charAt(replacment.length() - 1-i);
 		}
-		
-		
-		return b.toString();
+	
+		return reverCopy;
 	}
 
-	
 }
